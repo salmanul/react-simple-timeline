@@ -1,0 +1,54 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 10px;
+  margin: 50px 0px;
+}
+.circle {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(19, 92, 161);
+  border-radius: 50%;
+}
+
+.node-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  min-width: 150px;
+  bottom: 100%;
+  padding-bottom: 2px;
+  line-height: 18px;
+}
+.node {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 2px rgb(19, 92, 161);
+  padding: 3px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+hr {
+  border: none;
+  margin: 0px 5px;
+  flex-grow: 1;
+}
+.line-solid {
+  border-top: 2px solid rgb(19, 92, 161);
+}
+.line-dotted {
+  border-top: 2px dotted rgb(19, 92, 161);
+}
