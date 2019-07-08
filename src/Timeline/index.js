@@ -2,39 +2,57 @@ import React, { Component } from "react";
 
 class Timeline extends Component {
   static defaultProps = {
-    data: [
-      {
-        title: "Initialized",
-        checked: true
-      },
-      {
-        title: "Acknowledged",
-        checked: false
-      },
-      {
-        title: "Processed",
-        checked: false
-      }
-    ]
+    data: {
+      status: "initialized",
+      nodes: [
+        {
+          title: "Initialized",
+          dataIndex: "initialized"
+        },
+        {
+          title: "Acknowledged",
+          dataIndex: "acknowledged"
+        },
+        {
+          title: "Processed",
+          dataIndex: "processed"
+        }
+      ]
+    },
+    mode: "vertical" || "horizontal"
   };
   render() {
-    const { data } = this.props;
+    const { data, mode } = this.props;
+    const lastNode = data.nodes.find(x => x.dataIndex === data.status);
+    const lastNodeIndex = lastNode && data.nodes.indexOf(lastNode);
     return (
       <React.Fragment>
-        <div className="container">
+        <div className={`container ${mode}`}>
           {data &&
-            data.map((node, i) => (
-              <React.Fragment>
+            data.nodes.map((node, i) => (
+              <div className={`wrapper ${mode}`}>
                 {i !== 0 && (
-                  <hr className={node.checked ? "line-solid" : "line-dotted"} />
+                  <div
+                    className={`line ${
+                      i <= lastNodeIndex
+                        ? `line-solid ${mode}`
+                        : `line-dotted ${mode}`
+                    }`}
+                  />
                 )}
                 <div className="node-container">
-                  <div className="title">{node.title}</div>
+                  <div className={`title ${mode}`}>{node.title}</div>
                   <div className="node">
-                    {node.checked && <div className="circle" />}
+                    {i <= lastNodeIndex && (
+                      <div
+                        className={
+                          i === lastNodeIndex ? "circle animate" : "circle"
+                        }
+                      />
+                    )}
                   </div>
                 </div>
-              </React.Fragment>
+              </div>
             ))}
         </div>
       </React.Fragment>
