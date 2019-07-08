@@ -7,14 +7,34 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   padding: 0px 10px;
   margin: 50px 0px;
+}
+.container.vertical {
+  flex-direction: column;
+  min-height: 400px;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.wrapper.vertical {
+  flex-direction: column;
+}
+.wrapper:nth-child(1) {
+  flex: unset;
 }
 .circle {
   width: 100%;
   height: 100%;
   background-color: rgb(19, 92, 161);
   border-radius: 50%;
+}
+
+.animate {
+  animation: scale 1s infinite ease-in-out;
 }
 
 .node-container {
@@ -31,6 +51,12 @@
   padding-bottom: 2px;
   line-height: 18px;
 }
+.title.vertical {
+  min-width: unset;
+  bottom: unset;
+  left: 100%;
+  padding-left: 5px;
+}
 .node {
   width: 50px;
   height: 50px;
@@ -41,14 +67,35 @@
   position: relative;
 }
 
-hr {
+.line {
   border: none;
   margin: 0px 5px;
   flex-grow: 1;
+}
+.line.vertical {
+  margin: 5px 0px;
 }
 .line-solid {
   border-top: 2px solid rgb(19, 92, 161);
 }
 .line-dotted {
   border-top: 2px dotted rgb(19, 92, 161);
+}
+.line-solid.vertical {
+  border-left: 2px solid rgb(19, 92, 161);
+}
+.line-dotted.vertical {
+  border-left: 2px dotted rgb(19, 92, 161);
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
 }
